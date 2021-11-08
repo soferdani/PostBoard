@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import {Button  } from "react-bootstrap";
 import Note from "./components/Note";
+import 'bootstrap/dist/css/bootstrap.css'
 const data = require("./assets/posts.json");
 
 const handleSubmit = (event) => {
@@ -21,7 +22,7 @@ function App() {
 			<p>Here you can create and edit your posts</p>
 
       <Button variant="success">Success</Button>
-      
+
 			{notes.posts.map((posts) => (
 				<Note key={posts.id} data={posts} />
 			))}
