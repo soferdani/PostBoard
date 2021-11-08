@@ -1,0 +1,22 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "content": "Lorem ipsum dolor sit amet",
+            "author": "dani sofer",
+            "date": "2016-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 2,
+            "content": "this is sparta!!",
+            "author": "John Doe",
+            "date": "2016-01-01T00:00:00.000Z"
+        },
+        {
+            "id": 3,
+            "content": "what is my profession",
+            "author": "amit",
+            "date": "2016-01-01T00:00:00.000Z"
+        }
+    ]
+}
