@@ -1,52 +1,41 @@
 import "./App.css";
-import React, { useState } from "react";
-import {Button  } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
 import Note from "./components/Note";
-import 'bootstrap/dist/css/bootstrap.css'
+import "bootstrap/dist/css/bootstrap.css";
+import AddNote from "./components/AddNote";
 const data = require("./assets/posts.json");
 
-const handleSubmit = (event) => {
-	console.log(event);
-};
-
 function App() {
-	const [notes, setNotes] = useState(data);
-	const [newAuthorName, setNewAuthorName] = useState("");
-	const [newNoteContent, setNewNoteContent] = useState("");
+	const [notes, setNotes] = useState(data.posts);
 
-	console.log(notes.posts);
+
+	const addNote = (note, author) => {
+		const date = new Date();
+    const newNote = {
+      id: nanoid(),
+      content: note,
+      author: author,
+      date: date.toLocaleString()
+    };
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
+		
+    console.log(notes);
+	};
 
 	return (
 		<div className='App'>
 			<h1>Welcome to post board</h1>
-			<p>Here you can create and edit your posts</p>
+			<p>Here you can create your posts</p>
 
-      <Button variant="success">Success</Button>
+			<AddNote handelAddNote={addNote} />
 
-			{notes.posts.map((posts) => (
+			{notes.map((posts) => (
 				<Note key={posts.id} data={posts} />
 			))}
-
-			{/* <form onSubmit={handleSubmit}>
-				<input
-					type='text'
-					placeholder='Author Name'
-					value={newNoteTitle}
-					onChange={handleTitleChange}
-				/>
-				<textarea
-					placeholder='Content'
-					value={newNoteContent}
-					onChange={handleContentChange}
-				/>
-				<button type='submit'>Add</button>
-			</form> */}
 		</div>
 	);
 }
-
-// 	event.target.title.value = ""; // resets the form
-// 	event.target.content.value = ""; // resets the form
-// }
 
 export default App;
