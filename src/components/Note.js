@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import { useState } from 'react';
 import { Card, Modal,Button } from "react-bootstrap";
+import "../App.css";
+
 
 function Note({data}) {
     const [showCard, setShowCard] = useState(false);
@@ -26,7 +28,7 @@ function Note({data}) {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>{data.author}</Modal.Title>
+                    <Modal.Title>A note from {data.author}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <p>{data.content}</p>

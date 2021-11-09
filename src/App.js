@@ -35,10 +35,11 @@ function App() {
 			<p>Here you can create your posts</p>
 
 			<AddNote handelAddNote={addNote} />
-
-      {notes.map((posts) => (
-				<Note key={posts.id} data={posts} />
-			))}
+      <div className="notes">
+        {notes.map((posts) => (
+          <Note key={posts.id} data={posts} />
+        ))}
+      </div>
 		</div>
 	);
 }
