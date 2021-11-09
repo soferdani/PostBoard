@@ -4,10 +4,11 @@ import { nanoid } from "nanoid";
 import Note from "./components/Note";
 import "bootstrap/dist/css/bootstrap.css";
 import AddNote from "./components/AddNote";
-const data = require("./assets/posts.json");
+// const data = require("./assets/posts.json");
+
 
 function App() {
-	const [notes, setNotes] = useState(data.posts);
+	const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     let allNotesInLocalStore = JSON.parse(localStorage.getItem("notes"));
@@ -15,7 +16,7 @@ function App() {
     if (allNotesInLocalStore) {
       setNotes(allNotesInLocalStore);
     } else {
-      setNotes(data.posts);
+      setNotes([]);
     }
   }, []);
   

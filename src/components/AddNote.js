@@ -1,7 +1,6 @@
 import { Button, Modal, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
 const handleSubmit = (event) => {
 	console.log(event);
 };
