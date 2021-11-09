@@ -6,34 +6,27 @@ import "bootstrap/dist/css/bootstrap.css";
 import AddNote from "./components/AddNote";
 // const data = require("./assets/posts.json");
 
-
 function App() {
 	const [notes, setNotes] = useState([]);
 
-  useEffect(() => {
-    let allNotesInLocalStore = JSON.parse(localStorage.getItem("notes"));
-    console.log(allNotesInLocalStore);
-    if (allNotesInLocalStore) {
-      setNotes(allNotesInLocalStore);
-    } else {
-      setNotes([]);
-    }
+	useEffect(() => {
+		let allNotesInLocalStore = JSON.parse(localStorage.getItem("notes"));
+		if (allNotesInLocalStore) {
+			setNotes(allNotesInLocalStore);
+		}
   }, []);
   
-
 	const addNote = (note, author) => {
 		const date = new Date();
-    const newNote = {
-      id: nanoid(),
-      content: note,
-      author: author,
-      date: date.toLocaleString()
-    };
-    const newNotes = [...notes, newNote];
-    localStorage.setItem("notes", JSON.stringify(newNotes));
-    setNotes(newNotes);
-		
-    console.log(notes);
+		const newNote = {
+			id: nanoid(),
+			content: note,
+			author: author,
+			date: date.toLocaleString(),
+		};
+		const newNotes = [...notes, newNote];
+		localStorage.setItem("notes", JSON.stringify(newNotes));
+		setNotes(newNotes);
 	};
 
 	return (
@@ -43,7 +36,7 @@ function App() {
 
 			<AddNote handelAddNote={addNote} />
 
-			{notes.map((posts) => (
+      {notes.map((posts) => (
 				<Note key={posts.id} data={posts} />
 			))}
 		</div>
