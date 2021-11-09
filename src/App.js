@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import Note from "./components/Note";
 import "bootstrap/dist/css/bootstrap.css";
@@ -9,6 +9,16 @@ const data = require("./assets/posts.json");
 function App() {
 	const [notes, setNotes] = useState(data.posts);
 
+  useEffect(() => {
+    let allNotesInLocalStore = JSON.parse(localStorage.getItem("notes"));
+    console.log(allNotesInLocalStore);
+    if (allNotesInLocalStore) {
+      setNotes(allNotesInLocalStore);
+    } else {
+      setNotes(data.posts);
+    }
+  }, []);
+  
 
 	const addNote = (note, author) => {
 		const date = new Date();
@@ -19,6 +29,7 @@ function App() {
       date: date.toLocaleString()
     };
     const newNotes = [...notes, newNote];
+    localStorage.setItem("notes", JSON.stringify(newNotes));
     setNotes(newNotes);
 		
     console.log(notes);
