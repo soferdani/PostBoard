@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 
 function MainCard({ handelCardClick, date, content, author }) {
+    const isContentCard = Boolean(content);
 	return (
 		<>
 			<Card
@@ -13,7 +14,7 @@ function MainCard({ handelCardClick, date, content, author }) {
 				}}
 			>
 				<Card.Body>
-					{content ? (
+					{isContentCard ? (
 						<>
 							<Card.Title>{author}</Card.Title>
 							<Card.Subtitle className='mb-2 text-muted'>{date}</Card.Subtitle>
