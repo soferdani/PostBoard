@@ -23,7 +23,7 @@ When a note is clicked a modal window open and display the note content and afte
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 and requires [NPM](https://docs.npmjs.com/) to be installed.
 
-    git clone https://github.com/jwmunn/notes-react-app.git
+    git clone https://github.com/soferdani/post-board
     cd notes-react-app
     npm install
 
