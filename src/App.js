@@ -34,8 +34,8 @@ function App() {
 			<h1>Welcome to post board</h1>
 			<p>Here you can create your posts</p>
 
-			<AddNote handelAddNote={addNote} />
       <div className="notes">
+			<AddNote handelAddNote={addNote} />
         {notes.map((posts) => (
           <Note key={posts.id} data={posts} />
         ))}
