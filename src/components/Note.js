@@ -1,48 +1,47 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import { useState } from 'react';
-import { Card, Modal,Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
+import { useState } from "react";
+import { Modal, Button, Container } from "react-bootstrap";
 import "../App.css";
+import MainCard from "./MainCard";
 
+function Note({ data }) {
+	const [showCard, setShowCard] = useState(false);
 
-function Note({data}) {
-    const [showCard, setShowCard] = useState(false);
+	const handelCardClick = () => {
+		setShowCard(true);
+	};
 
-    const handelCardClick = () => {
-        setShowCard(true)
-    }
-
-
-    return (
-        <div className="note">
-            <Card onClick={handelCardClick} style={{ width: '18rem', cursor: "pointer" }}>
-                <Card.Body>
-                <Card.Title>{data.author}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{data.date}</Card.Subtitle>
-                <Card.Text>{data.content}</Card.Text>
-                </Card.Body>
-            </Card>
-            <Modal
-                show={showCard}
-                onHide={() => setShowCard(false)}
-                backdrop="static"
-                keyboard={false}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>A note from {data.author}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <p>{data.content}</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowCard(false)}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </div>
-    );
+	return (
+		<>
+			<Container fluid={TextTrackCue}>
+				<MainCard
+					handelCardClick={handelCardClick}
+					date={data.date}
+					content={data.content}
+					author={data.author}
+				/>
+			</Container>
+			<Modal
+				show={showCard}
+				onHide={() => setShowCard(false)}
+				backdrop='static'
+				keyboard={false}
+			>
+				<Modal.Header closeButton>
+					<Modal.Title>A note from {data.author}</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<p>{data.content}</p>
+				</Modal.Body>
+				<Modal.Footer>
+					<p>{data.date}</p>
+					<Button variant='secondary' onClick={() => setShowCard(false)}>
+						Close
+					</Button>
+				</Modal.Footer>
+			</Modal>
+		</>
+	);
 }
-
-
 
 export default Note;

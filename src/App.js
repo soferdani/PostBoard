@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import Note from "./components/Note";
 import "bootstrap/dist/css/bootstrap.css";
 import AddNote from "./components/AddNote";
+import { Container, Row } from "react-bootstrap";
 // const data = require("./assets/posts.json");
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
 		if (allNotesInLocalStore) {
 			setNotes(allNotesInLocalStore);
 		}
-  }, []);
-  
+	}, []);
+
 	const addNote = (note, author) => {
 		const date = new Date();
 		const newNote = {
@@ -34,12 +35,14 @@ function App() {
 			<h1>Welcome to post board</h1>
 			<p>Here you can create your posts</p>
 
-      <div className="notes">
-			<AddNote handelAddNote={addNote} />
-        {notes.map((posts) => (
-          <Note key={posts.id} data={posts} />
-        ))}
-      </div>
+			<Container fluid={true}>
+				<Row lg={{ cols: 4 }} sm={{ cols: 2 }} xs={{ cols: 1 }}>
+					<AddNote handelAddNote={addNote} />
+					{notes.map((posts) => (
+						<Note key={posts.id} data={posts} />
+					))}
+				</Row>
+			</Container>
 		</div>
 	);
 }

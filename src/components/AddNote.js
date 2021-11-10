@@ -1,6 +1,7 @@
-import { Button, Modal, Form, Card } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState } from "react";
+import MainCard from "./MainCard";
 
 function AddNote({ handelAddNote }) {
 	const [show, setShow] = useState(false);
@@ -16,7 +17,7 @@ function AddNote({ handelAddNote }) {
 	const handleShow = () => {
 		setShow(true);
 	};
-	
+
 	const handleSubmit = (event) => {
 		const form = event.currentTarget;
 		console.log(form.checkValidity());
@@ -34,11 +35,7 @@ function AddNote({ handelAddNote }) {
 
 	return (
 		<div className='add-note'>
-			<Card onClick={handleShow} style={{ width: "18rem", cursor: "pointer" }}>
-				<Card.Body>
-					<Card.Text>New Post</Card.Text>
-				</Card.Body>
-			</Card>
+			<MainCard handelCardClick={handleShow} />
 
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
@@ -74,7 +71,7 @@ function AddNote({ handelAddNote }) {
 						<Button variant='secondary' onClick={handleClose}>
 							Close
 						</Button>
-						<Button variant='primary' type='submit' >
+						<Button variant='primary' type='submit'>
 							Save New Post
 						</Button>
 					</Form>
