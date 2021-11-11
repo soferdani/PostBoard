@@ -26,8 +26,6 @@ function AddNote({ handelAddNote }) {
 			event.stopPropagation();
 		} else {
 			handelAddNote(note, author);
-			setAuthor("");
-			setNote("");
 			setShow(false);
 		}
 		setValidated(true);
