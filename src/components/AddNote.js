@@ -20,7 +20,6 @@ function AddNote({ handelAddNote }) {
 
 	const handleSubmit = (event) => {
 		const form = event.currentTarget;
-		console.log(form.checkValidity());
 		if (form.checkValidity() === false) {
 			event.preventDefault();
 			event.stopPropagation();
@@ -66,7 +65,7 @@ function AddNote({ handelAddNote }) {
 								You must provide content
 							</Form.Control.Feedback>
 						</Form.Group>
-						<Button variant='secondary' onClick={handleClose}>
+						<Button variant='secondary' onClick={handleClose} style={{marginRight: "15px"}}>
 							Close
 						</Button>
 						<Button variant='primary' type='submit'>
